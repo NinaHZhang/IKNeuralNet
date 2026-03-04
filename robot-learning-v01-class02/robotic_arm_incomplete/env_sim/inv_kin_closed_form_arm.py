@@ -6,6 +6,7 @@ with contextlib.redirect_stdout(None):
 import pygame.locals
 import numpy as np
 import pygame
+import math
 import sys
 import os
 from robot_arm.arm_part import ArmPart
@@ -41,11 +42,15 @@ hand_offset = 35
 
 def inv_kin_2arm(x, y, link0_length, link1_length):
 
+    if math.sqrt(x**2 + y**2) > link0_length + link1_length or math.sqrt(x**2 + y**2) < abs(link0_length-link1_length):
+        return -1, -1
+
     ###### Check End Effector Desired x,y is possible given link0 and link1 lengths ######
 
     ###### If x,y is impossible return -1,-1 ######
 
     ###### If x,y Is Possible Return Theta Upper And Theta Lower Arm Respectively ######
+    
 
 
 #################################################################################################
